@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Tasks</title>
+    <link rel="stylesheet" href='/static/main.css'>
+</head>
+<body>
+    <form method="POST" action="/addtask">
+        <label>Add your task</label><br />
+        <input name="task" type="text" required>
+        <input type="submit" >
+    </form>
+<ol>
+    <p>All Tasks</p>
+        {{range .}}
+        <li>
+        <div>
+            <p class="title">{{.Text}}</p>
+        </div>
+    <form method="POST" action="/deletetask">
+            <input type="hidden" name="id" value="{{.Id}}">
+            <input type="submit" name="del" value="Remove"/> 
+    </form>         
+        </li>
+        {{end}}
+</ol>
+</body>
+</html>
